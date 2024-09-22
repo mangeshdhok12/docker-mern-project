@@ -1,0 +1,100 @@
+# # TASK 10: Docker Compose Setup
+
+# # TASK 11: Docker Networking:
+
+# version: '3'
+# services: 
+#   mongo:
+#     image: mongo
+#     container_name: mongo_c
+#     volumes: 
+#       - mongo-data:/data/db
+#     ports:
+#       - '27017:27017'
+
+#   back:
+#     build: ./back
+#     container_name: back_c
+#     depends_on: 
+#       - mongo
+#     ports: 
+#       - '3000:3000'
+#     volumes:
+#       - ./back:/app
+#       - /app/node_modules
+#     environment: 
+#       - MONGO_URI=mongodb+srv://dhokmangesh678:mangesh123@userclus.n2spg.mongodb.net/?retryWrites=true&w=majority&appName=UserClus
+
+#   front:
+#     build: ./front
+#     container_name: frontend_c
+#     ports:
+#       - '5173:5173'
+#     stdin_open: true
+#     tty: true
+#     volumes:
+#       - ./front:/app
+#       - /app/node_modules
+
+#      python-analysis:
+#     build: ./data_analysis
+#     container_name: python_analysis_c
+#     volumes:
+#       - ./data_analysis:/app
+#     depends_on:
+#       - mongo
+#     command: ["python", "analysis.py"]
+
+# volumes:
+#   mongo-data:
+
+# TASK 10: Docker Compose Setup
+
+# TASK 11: Docker Networking:
+
+version: '3'
+services: 
+  mongo:
+    image: mongo
+    container_name: mongo_c
+    volumes: 
+      - mongo-data:/data/db
+    ports:
+      - '27017:27017'
+
+  back:
+    build: ./back
+    container_name: back_c
+    depends_on: 
+      - mongo
+    ports: 
+      - '3000:3000'
+    volumes:
+      - ./back:/app
+      - /app/node_modules
+    environment: 
+      - MONGO_URI=mongodb+srv://dhokmangesh678:mangesh123@userclus.n2spg.mongodb.net/?retryWrites=true&w=majority&appName=UserClus
+
+  front:
+    build: ./front
+    container_name: frontend_c
+    ports:
+      - '5173:5173'
+    stdin_open: true
+    tty: true
+    volumes:
+      - ./front:/app
+      - /app/node_modules
+
+  # python-analysis:
+  #   build: ./data_analysis
+  #   container_name: python_analysis_c
+  #   volumes:
+  #     - ./data_analysis:/app
+  #   depends_on:
+  #     - mongo
+  #   command: ["python", "analysis.py"]
+
+volumes:
+  mongo-data:
+
